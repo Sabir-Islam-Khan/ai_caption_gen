@@ -24,7 +24,7 @@ class ResultsScreen extends StatelessWidget {
               : [
                   Text("Captions Generated"),
                   Text(
-                    "${geminiAPIProvider.getResponse!.length} captions generated.",
+                    "1 captions generated.",
                     style: TextStyle(fontSize: 12),
                   ),
                 ],
@@ -37,7 +37,7 @@ class ResultsScreen extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 )
               : ListView.builder(
-                  itemCount: geminiAPIProvider.getResponse!.length,
+                  itemCount: 1,
                   itemBuilder: (context, index) {
                     return Card(
                       child: Container(
@@ -45,7 +45,7 @@ class ResultsScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(geminiAPIProvider.getResponse![index],
+                            Text(geminiAPIProvider.getResponse!,
                                 style: TextStyle(fontSize: 20)),
                             Align(
                               alignment: Alignment.centerRight,

@@ -29,28 +29,13 @@ class GeminiAPIService {
     ],
   );
 
-  static Future<List<dynamic>> generateCaption(
+  static Future<String> generateCaption(
       Uint8List imageBytes, String tone, String language) async {
     log("language is $language");
     final prompt = TextPart("""
-       You are a helpful assistant of users to write their social media post. You are a pro social media content writer. You are
-       poetic, humanlike and sophisticated. You understand human emotions and how people convey it in social media. You understand
-       how to write social media captions that goes well with a photo and the mood of someone. Now, you will be given a photo and the mood
-       of the user. You must analyze the photo. Understand analyze the photo to understand whats the meaning, envorinment, social settings, 
-      of the picture.  If its a travel picture, with friends and family, alone or anything. You must anazlying the deeper 
-      meaning of the picture. Do facial analysis if necessary to understand users mood better. You will be also given the mood of the user. You must analyze how the picture matches or goes with the mood. 
-      Then you need to write amazing captions accordingly to the picture and mood. Captions should not be boring. It should be cool
-      for social media. With perfect portion of funniness, sadness, sophistication, spriritual or deeper meaning according to the mood. 
-      You are already given a photo. Here is the mood of the user mood = {$tone}. Now write 5-15 captions. Captions must be humanlike
-      and not boring.
-      The output must follow this json format:
-        {
-          "captions": [
-            "caption 1",
-            "caption 2",
-            "caption 3"
-          ]
-        }
+    You are a medical assistant bot.You know everything about human body and its chemistry. You are given the medical report of a patient. Analyize the report to check if everything is okay.
+    Explain everything. What is the normal range, what the patient has. What they should do. What disease it can cause, how to control everything.
+    Keep it short and precise. Dont do into too much details. People should understand it clearly. 
     """);
     final imageParts = [
       DataPart('image/jpeg', imageBytes),
@@ -61,7 +46,7 @@ class GeminiAPIService {
     ]);
 
     log(response.text!);
-    var jsonData = jsonDecode(response.text!);
-    return jsonData["captions"];
+
+    return response.text!;
   }
 }

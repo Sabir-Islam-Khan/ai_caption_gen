@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class GeminiAPIProvider extends ChangeNotifier {
   bool isLoading = false;
-  List<dynamic>? response;
+  String? response;
 
   void genCaption(Uint8List imageBytes, String tone, String language) async {
     isLoading = true;
@@ -17,5 +17,5 @@ class GeminiAPIProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<dynamic>? get getResponse => response;
+  String? get getResponse => response;
 }
